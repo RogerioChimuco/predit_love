@@ -232,6 +232,18 @@ interface PythagoreanAlgorithm {
    - `GEMINI_API_KEY` = tua chave da API do Google Gemini
 6. Clica **Deploy**
 
+> **Nota:** Este repositório inclui um `installCommand` no `vercel.json` para garantir que o ambiente de build use o gerenciador `uv` e instale dependências com `uv sync --locked --no-dev`. Se preferires, confirma nas *Build & Development Settings* do projeto na dashboard que o comando de instalação foi detectado.
+
+Exemplo (parte relevante do `vercel.json`):
+
+```json
+{
+  "build": {
+    "installCommand": "python -m pip install --upgrade pip && python -m pip install uv && uv sync --locked --no-dev"
+  }
+}
+```
+
 ### Via CLI
 
 ```bash
@@ -241,10 +253,15 @@ npm i -g vercel
 # Login
 vercel login
 
+# (Opcional) Adicionar variável de ambiente via CLI
+# Exemplo: vercel env add GEMINI_API_KEY production
+
 # Deploy
 cd predit_love
 vercel --prod
 ```
+
+> Dica: o comando `uv sync --locked --no-dev` instala as dependências exatamente como definidas no `uv.lock`, reduzindo surpresas no ambiente de produção.
 
 ---
 
