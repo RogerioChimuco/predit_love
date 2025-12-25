@@ -1,5 +1,8 @@
 {
   "version": 2,
+  "build": {
+    "installCommand": "uv pip install -r requirements.txt"
+  },
   "builds": [
     {
       "src": "api/index.py",
